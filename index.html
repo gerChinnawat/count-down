@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Count Down to 31 March 2026
+        </title>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: 100vh;
+                justify-content: center;
+                font-size: 72px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="days_to_go">0 Day to Go</h1>
+        <script>
+            const handleTime = () => {
+                const endDate = new Date('2026-03-31T23:59:59');
+                const currentDay = new Date();
+    
+                const diff = endDate - currentDay;
+    
+                let text = '';
+    
+                if (diff <= 0) {
+                    text = 'Congratulations!';
+                } else {
+                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    text = `${days} Day${days !== 1 ? 's' : ''} to Go!`;
+                }
+    
+                document.getElementById('days_to_go').textContent = text;
+            };
+    
+            setInterval(handleTime, 1000*60*60);
+    
+            handleTime();
+        </script>
+    </body>    
+</html>
